@@ -17,7 +17,9 @@ public class App{
 
         System.out.print("최대인원 ?");
         String number = Sc.nextLine();
-        
+        //int number = Sc.nextInt(); 이것을 사용하였을경우
+        //sc.nextLine(); 숫자뒤에 줄바꿈 코드를 읽는다
+                        //일고 난뒤에 아무것도 안하기때문에 일종의 줄바꿈 코드를 제거하는 효과가있다.
 
         System.out.print("시작일 ?");
         String sday = Sc.nextLine();
@@ -25,10 +27,11 @@ public class App{
         String fday = Sc.nextLine();
 
         System.out.println();
+        System.out.println("------------------------------");
         System.out.println("팀명 : " +name);
         System.out.println("설명 : " + explain);
         System.out.println("최대인원 = " +number);
-        System.out.println("일자 = " +sday +"~"+ fday);
+        System.out.println("일자 = " +sday +" ~ "+ fday);
 
     
     }
