@@ -12,6 +12,13 @@ public class Exam08_7 {
         char ch;
         int i = 0x41;
         ch = (char)i;
+            // 그 외에는 형변환 불가
+        
+            boolean v1 = (boolean)"ture"; //컴파일 오류
+            //=> 문자열을 정수나 부동소수점, 문자, boolearn값으로 변활할수 없다.
+            char v2 =(char) "가";
+            int v3 = (int) "123";
+            float v4 = (float) "123141";
 
     }
 }

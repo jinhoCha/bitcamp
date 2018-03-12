@@ -9,6 +9,7 @@ public class App_2{
 
         // 팀 정보를 받을 메모리 준비
         Team team = new Team();
+        
 
         System.out.print("팀명? ");
         team.name = keyScan.nextLine();

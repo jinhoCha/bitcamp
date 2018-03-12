@@ -1,0 +1,27 @@
+
+package bitcamp.java106.pms; //src main java는 안쓴다
+import java.util.Scanner;
+import java.util.Date;
+import java.util.ArrayList;
+
+//4단계 명령 입력 프롬프트를 출력한다.
+public class App03{
+    public static void main(String[]args){
+        Scanner keyScan = new Scanner(System.in);
+
+        while(true) {
+        System.out.println("명령 >");
+        String input = keyScan.nextLine();
+
+        if (input.toLowerCase().equals("quit")){
+            System.out.print("안녕히 가세요!");
+
+            break;
+        }
+
+         System.out.print(input);
+        }
+}
+}
+    
+

@@ -1,4 +1,4 @@
-// 형변환 - 명시적 형변환 강제형변환 가능한경우
+// 형변환 - 명시적 형변환 강제형변환 II두번째
 package step02;
  
 public class Exam08_6 {

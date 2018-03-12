@@ -17,9 +17,7 @@ public static void main(String[] args) {
       System.out.println(a == b) ; //false
       System.out.println(a != b) ; // true
 
-      double d1 = 987.6543;
-      double d2 = 1.111111;
-      System.out.println((d1 + d2) == 988.765411) ; // false
+    
     }
 }
 

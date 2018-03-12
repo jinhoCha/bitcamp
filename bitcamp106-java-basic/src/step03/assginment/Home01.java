@@ -1,4 +1,4 @@
-package step03.assignment;
+package step03.assginment;
 import step03.assignment.Bitcamp;
 //미리 컴파일러에게 클래스의 위치 정보를 알려준다
 //컴파일한 후 import 명령은 제거된다

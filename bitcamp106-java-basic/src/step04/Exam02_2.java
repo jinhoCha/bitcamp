@@ -22,11 +22,11 @@ public static void main(String[] args) {
       double y = 754.0;
       double EPSLION = 0.000001;
       System.out.println(x + y); // 988.765411
-      System.out.println(Math.abs((d1 + d2) - (x + y)) < EPSLION);
+      System.out.println(Math.abs((d1 + d2) - (x + y)) < EPSLION); // true 988.765440000001 의 뒷부분을 잘라버린다
 
       System.out.println((d1 + d2) == (x+ y)); // false 
       
-      System.out.println(Math.abs((d1 + d2) - 988.765411) < EPSLION);
+      System.out.println(Math.abs((d1 + d2) - 988.765411) < EPSLION); //ture
     }
 }
 
