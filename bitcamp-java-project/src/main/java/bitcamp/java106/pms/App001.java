@@ -5,13 +5,14 @@ import java.util.Scanner;
 import bitcamp.java106.pms.util.Console;
 import bitcamp.java106.pms.controller.MemberController;
 import bitcamp.java106.pms.controller.TeamController;
+import bitcamp.java106.pms.controller.BoardController;
 
 
 //ver 0.1 - 팀 관리기능(메서드)의 별도로 클래스로 옮긴다.
     // => controller.TeamController 클래스 추가
     // 사용자 입력 기능 추가
     // 
-public class App {
+public class App001 {
     // 클래스 변수 = 스태틱 변수
     // => 클래스 안에서 어디에서나 사용할 수 있는 변수이다.
     static Scanner keyScan = new Scanner(System.in);
@@ -43,6 +44,7 @@ public class App {
 
     public static void main(String[] args) {
         // 클래스를 사용하기전에 필수 값을 설정한다.
+        BoardController.keyScan = keyScan;
         MemberController.keyScan = keyScan;
         TeamController.keyScan = keyScan;
         Console.keyScan = keyScan;
@@ -62,11 +64,11 @@ public class App {
             } else if (menu.equals("help")) {
                 onHelp();
             }
-             else if (menu.startsWith("team/")){
-                TeamController.service(menu, option);
-             } else if (menu.startsWith("member/")){
-                MemberController.service(menu, option);
-            }   else {
+             else if (menu.startsWith("board/")){
+                BoardController.service(menu, option);
+             } //else if (menu.startsWith("member/")){
+               // MemberController.service(menu, option);}
+               else {
                 System.out.println("명령어가 올바르지 않습니다.");
             }
 

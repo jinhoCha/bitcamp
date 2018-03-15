@@ -18,6 +18,7 @@ import bitcamp.java106.pms.domain.Team;
 //8단계 team/view 명령을 구현한다.
 //9단계 - member/add 명령을 구현한다. 회원 정보를 담을 새로운 데이터 타입을 정의한다. => 도메인에 Member.java 작성
 //        여러회원 정보를 저장할 레퍼랜스 배열을 준비한다.
+//10더ㅏㄴ계
 public class App09{
     public static void main(String[]args){
         Scanner keyScan = new Scanner(System.in);
@@ -130,7 +131,7 @@ public class App09{
 
             }   
 
-            else if (menu.equals("team/add")){
+            else if (menu.equals("member/add")){
                 System.out.println("[팀 정보 입력]");
                 Member member = new Member(); // 팀메모리를 만든다
 
