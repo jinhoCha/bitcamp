@@ -210,6 +210,11 @@ public class Aps11_6 {
                 remove(team.name);
                 System.out.println("삭제가 완료되었습니다.");
             }
+            else {
+                confirm2("삭제가 취소되었습니다."){
+
+                }
+            }
         }
         }
     

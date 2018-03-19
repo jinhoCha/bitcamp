@@ -1,11 +1,11 @@
 
 package bitcamp.java106.pms; //src main java는 안쓴다
+
 import java.util.Scanner;
 
-import bitcamp.java106.pms.util.Console;
 import bitcamp.java106.pms.controller.MemberController;
 import bitcamp.java106.pms.controller.TeamController;
-
+import bitcamp.java106.pms.util.Console;
 
 //ver 0.1 - 팀 관리기능(메서드)의 별도로 클래스로 옮긴다.
     // => controller.TeamController 클래스 추가
