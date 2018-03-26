@@ -40,7 +40,7 @@ public class Exam04_1 {
 
         byte b2;
         b2 = 100; // OK
-        b2 = 100L; //?
+       // b2 = 100L; //?
     }
 }
 

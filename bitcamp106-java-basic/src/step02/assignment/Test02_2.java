@@ -62,8 +62,9 @@ import java.util.Scanner;
 				average[4] = sum[4] / 3;
 
 				System.out.print("입력? "); // ex) 입력? 홍길동 100 90 80
-				name[5] = keyScan.next();
+				name[5] = keyScan.nextLine();
 				kor[5] = keyScan.nextInt();
+			
 				eng[5] = keyScan.nextInt();
 				math[5] = keyScan.nextInt();
 		
@@ -73,7 +74,7 @@ import java.util.Scanner;
 		
 				System.out.println("------------------------------");
 				for(int i=0; i<5; i++){
-				System.out.println(name[i],"\n");
+				System.out.printf(name[i],"\n");
 				System.out.print(kor[i] + "\n ");
 				System.out.print(eng[i] + "\n ");
 				System.out.print(math[i] + "\n ");

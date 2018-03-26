@@ -1,4 +1,4 @@
-package step02;
+package step02.assignment;
 import java.util.Scanner;
 
 public class Rnr{
@@ -86,7 +86,7 @@ public class Rnr{
 												//번호는 i+1;이라고 줘도댐 for에서 0부터시작했으니까
 }
 
-ㅇ
+
 	System.out.println("----------------------------------------------");
 	System.out.printf("합격인원 = %d 불합격 인원=%d\n", pc, fc);
 	System.out.printf("최고평균점수=%d 번호는=%d 최저평균점수=%d 번호는 =%d\n", max, maxnumber, min, minnumber);

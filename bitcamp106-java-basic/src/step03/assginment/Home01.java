@@ -1,5 +1,5 @@
 package step03.assginment;
-import step03.assignment.Bitcamp;
+import step03.assginment.Bitcamp;
 //미리 컴파일러에게 클래스의 위치 정보를 알려준다
 //컴파일한 후 import 명령은 제거된다
 //즉 .class 파일에 포함되지 않는다
@@ -11,11 +11,11 @@ public class Home01 {
 
         java.util.Scanner keyscan = new java.util.Scanner(System.in);
 
-        step03.assignment.Bitcamp[] arr= new step03.assignment.Bitcamp[5];//이것의 역할
+        step03.assginment.Bitcamp[] arr= new step03.assginment.Bitcamp[5];//이것의 역할
         String conti;
         
         for(int i=0;i<arr.length;i++){
-            arr[i] = new step03.assignment.Bitcamp();//배열선언
+            arr[i] = new step03.assginment.Bitcamp();//배열선언
             
             System.out.print("팀명?");
             arr[i].tname = keyscan.nextLine();

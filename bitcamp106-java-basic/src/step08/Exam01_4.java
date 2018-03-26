@@ -8,8 +8,8 @@ static class A{
     // 클래스 이름을 사용한다고 해서 " 클래스에 소속된 변수" , 클래스 변수"라 부른다.
     //=> static이 붙은 변수이기 때문에 " 스태틱 변수"라고도 부른다.
     // => "Method Area" 영역에 존재한다
-    static int v1;
-    int v2;
+    static int v1; // 클래스 변수
+    int v2; // 인스턴스 변수
 }
 
 

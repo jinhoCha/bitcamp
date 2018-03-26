@@ -9,8 +9,8 @@ public class Exam08_1 {
         int i = 100;
         long l = 100;
         char c =100;
-/*
-        byte b2;
+
+/*        byte b2;
         short s2;
         int i2;
         long l2;
@@ -24,6 +24,6 @@ public class Exam08_1 {
         i2 =l;
         c2 =s;  //같은 2바이트라도 유효한 값의 범윅 ㅏ다르다.
                 // char( 0 ~ 65535), short(-32768 ~ 32767)
+    }*/
     }
 }
-*/

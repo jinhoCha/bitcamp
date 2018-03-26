@@ -11,7 +11,7 @@ public static void main(String[] args) {
         float f = 5.5f;
         double d = 6.6;
         char c = 7;
-        boolean bool = ture;
+        boolean bool = true;
 
         //byte + byte = int
         // => 연산을 하기 전에 byte 값이 int로 암시적 형변환 된다.

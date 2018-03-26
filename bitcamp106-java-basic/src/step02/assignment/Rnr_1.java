@@ -1,4 +1,4 @@
-package step02;
+package step02.assignment;
 import java.util.Scanner;
 
 public class Rnr_1{
@@ -57,7 +57,7 @@ public class Rnr_1{
  }
   	
 	if (max[i] < avg[i]){
-  	 max = avg[i];
+  	 max[i] = avg[i];
   	 maxnumber = i + 1;
    	
  }
@@ -83,7 +83,7 @@ public class Rnr_1{
 	}
 	
 	for (i = 0; i < 9; i++){
-		for (j = i + 1; j < 10; j++){
+		for (int j = i + 1; j < 10; j++){
 	  
 	  
 		 if (max[i] < max[j]){

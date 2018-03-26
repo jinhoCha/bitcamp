@@ -3,7 +3,7 @@
 
 //# 실행결과
 
-package step05.assignmnet;
+package step05.assignment;
 import java.util.Scanner;
 
 

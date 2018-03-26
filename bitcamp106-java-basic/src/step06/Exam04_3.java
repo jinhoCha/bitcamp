@@ -2,7 +2,7 @@
 package step06;
 import java.util.Scanner;
 
-class MyObject{
+class MyObject2{
     int a;
     int b;
     
@@ -11,9 +11,9 @@ class MyObject{
 
 public class Exam04_3 {
  
-    static MyObject getMyObject(){
+    static MyObject2 getMyObject2(){
             //Exam03_3.java에 정의된 MyObejct 클래스 사용
-       MyObject ref = new MyObject();
+       MyObject2 ref = new MyObject2();
        ref.a =100;
        ref.b =200;
 
@@ -22,9 +22,9 @@ public class Exam04_3 {
     }
 
     public static void main(String[] args){
-      MyObject ref;
+      MyObject2 ref;
      
-       ref = getMyObject();
+       ref = getMyObject2();
        System.out.println(ref.a);
        System.out.println(ref.b);
 
@@ -35,11 +35,11 @@ public class Exam04_3 {
     // - >  JVM Stack : args, ref 변수 생성
     //2 ) getArray() 호출
     // = > JVM Stack: ref 변수 생성
-    // = > new 명령을 통해서 Heap: new MyObject 클래스 생성
+    // = > new 명령을 통해서 Heap: new MyObject2 클래스 생성
     //
-    //3 ) getMyObject()호출 끝
-    // => JVM Stack: getMyObject() 관련 메모리(ref 변수) 제거
-    // => getMyObject() 주소 리턴
+    //3 ) getMyObject2()호출 끝
+    // => JVM Stack: getMyObject2() 관련 메모리(ref 변수) 제거
+    // => getMyObject2() 주소 리턴
     //4 ) main() 호출 끝
     // => JVM Stack : main() 관련 메모리 제거
     //5 ) JVM 종료

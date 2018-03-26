@@ -1,4 +1,4 @@
-package step03.assignment;
+package step03.assginment;
 
 public class Bitcamp{
 

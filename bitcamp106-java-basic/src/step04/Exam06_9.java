@@ -1,7 +1,7 @@
 // 할당 연산자 : +=, -=, *=, /=, &=, |=, ^=, %=, <<=, >>=, >>>=
 package step04;
 
-public class Exam06_8 {
+public class Exam06_9 {
 public static void main(String[] args) {
      
     int i = 2;

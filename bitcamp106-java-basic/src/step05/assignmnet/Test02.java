@@ -1,9 +1,6 @@
 package step05.assignmnet;
 import java.util.Scanner;
 
-
-import java.util.Scanner;
-
 public class Test02 {
     public static void main(String[] args) {
         Scanner keyScan = new Scanner(System.in);

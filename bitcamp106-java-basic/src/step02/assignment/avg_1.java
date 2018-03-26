@@ -1,7 +1,7 @@
-package step02;
+package step02.assignment;
 import java.util.Scanner;
 
-public class avg.1{
+public class avg_1{
     public static void main(String[]args){
 
 	int kor=0, eng =0, mat= 0;
