@@ -20,9 +20,6 @@ public class Exam01_2 {
 }
 
 
-// 오류 예시
-
-
 
 
 

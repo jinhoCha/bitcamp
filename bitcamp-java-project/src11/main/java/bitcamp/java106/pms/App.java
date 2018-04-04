@@ -1,5 +1,4 @@
-
-package bitcamp.java106.pms; //src main java는 안쓴다
+package bitcamp.java106.pms;
 
 import java.util.Scanner;
 
@@ -8,8 +7,6 @@ import bitcamp.java106.pms.controller.MemberController;
 import bitcamp.java106.pms.controller.TeamController;
 import bitcamp.java106.pms.util.Console;
 
-// ver 0.2 - member 메뉴를 처리하는 코드를 관련 클래스인 MemberController로 옮긴다.
-// ver 0.1 - team 메뉴를 처리하는 코드를 TeamController로 옮긴다.
 public class App {
     static Scanner keyScan = new Scanner(System.in);
     public static String option = null; 
@@ -31,16 +28,16 @@ public class App {
 
     public static void main(String[] args) {
         // 클래스를 사용하기 전에 필수 값을 설정한다.
-        TeamController teamController = new TeamController(keyScan);
-       
         
-        MemberController memberController = new MemberController(keyScan);
+        TeamController teamController = new TeamController();
+        teamController.keyScan = keyScan;
         
-       // memberController.keyScan = keyScan;
-       // TeamController.keyScan = keyScan;
-        //MemberController.keyScan = keyScan;
-        //BoardController.keyScan = keyScan;
-        BoardController boardController = new BoardController(keyScan);
+        MemberController memberController = new MemberController();
+        memberController.keyScan = keyScan;
+
+        BoardController boardController = new BoardController();
+        boardController.keyScan = keyScan;
+        
         Console.keyScan = keyScan;
 
         while (true) {
@@ -63,12 +60,12 @@ public class App {
             } else if (menu.startsWith("member/")) {
                 memberController.service(menu, option);
             } else if (menu.startsWith("board/")) {
-               boardController/*(인스턴스주소)*/.service(menu, option);
+                boardController.service(menu, option);
             }else {
                 System.out.println("명령어가 올바르지 않습니다.");
             }
 
-            System.out.println();
+            System.out.println(); 
         }
     }
 }

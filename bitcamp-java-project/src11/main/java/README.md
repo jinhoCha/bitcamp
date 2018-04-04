@@ -1,1 +1,5 @@
-애플리케이션 설정 파일을 두는 폴더
+# 변경 내역
+- BoardController.java 변경
+- MemberController.java 변경
+- TeamController.java 변경
+- App.java 변경
