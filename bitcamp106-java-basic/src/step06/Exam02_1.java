@@ -1,6 +1,8 @@
-// 메서드 사용후
+// 메서드 : 개념 및 기본 문법
 package step06;
+
 import java.util.Scanner;
+
 public class Exam02_1 {
 
     // 문법
@@ -52,8 +54,8 @@ public class Exam02_1 {
         //hello(100);// 컴파일 오류!
 
         // hello 메서드는 값을 리턴하지 않기 때문에 변수로 값을 받으려 하면 
-      //  int i;
-      //  i = hello(); // 컴파일 오류!
+        int i;
+        i = hello(); // 컴파일 오류!
         
     }
 }

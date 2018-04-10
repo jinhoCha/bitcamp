@@ -1,30 +1,53 @@
 package bitcamp.java106.pms;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import bitcamp.java106.pms.controller.BoardController;
-import bitcamp.java106.pms.controller.ClassroomController;
+import bitcamp.java106.pms.context.ApplicationContext;
 import bitcamp.java106.pms.controller.Controller;
-import bitcamp.java106.pms.controller.MemberController;
-import bitcamp.java106.pms.controller.TaskController;
-import bitcamp.java106.pms.controller.TeamController;
-import bitcamp.java106.pms.controller.TeamMemberController;
+import bitcamp.java106.pms.dao.BoardDao;
+import bitcamp.java106.pms.dao.ClassroomDao;
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
-import bitcamp.java106.pms.domain.Member;
-import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.util.Console;
 
 public class App {
+    
+    static ApplicationContext iocContainer;
+    
     static Scanner keyScan = new Scanner(System.in);
     public static String option = null; 
     
     static void onQuit() {
         System.out.println("안녕히 가세요!");
+        BoardDao boardDao = (BoardDao) iocContainer.getBean(BoardDao.class);
+        ClassroomDao classroomDao = (ClassroomDao) iocContainer.getBean(ClassroomDao.class);
+        MemberDao memberDao = (MemberDao) iocContainer.getBean(MemberDao.class);
+        TaskDao taskDao = (TaskDao) iocContainer.getBean(TaskDao.class);
+        TeamDao teamDao = (TeamDao) iocContainer.getBean(TeamDao.class);
+        TeamMemberDao teamMemberDao = (TeamMemberDao) iocContainer.getBean(TeamMemberDao.class);
+        
+        // 각각의 데이터 저장에 대해 예외 처리를 분리해야 한다.
+        // 그래야만 예외가 발생하더라도 다른 데이터 저장은 정상적으로 수행할 것이다.
+        try {boardDao.save();} 
+        catch (Exception e) { System.out.println("게시물 데이터 저장 중 오류 발생!");}
+        
+        try {classroomDao.save();} 
+        catch (Exception e) { System.out.println("수업 데이터 저장 중 오류 발생!");}
+        
+        try {memberDao.save();} 
+        catch (Exception e) { System.out.println("회원 데이터 저장 중 오류 발생!");}
+        
+        try {taskDao.save();} 
+        catch (Exception e) { System.out.println("작업 데이터 저장 중 오류 발생!");}
+            
+        try {teamDao.save();} 
+        catch (Exception e) { System.out.println("팀 데이터 저장 중 오류 발생!");}    
+        
+        try {teamMemberDao.save();} 
+        catch (Exception e) { System.out.println("팀멤버 데이터 저장 중 오류 발생!");}
     }
 
     static void onHelp() {
@@ -38,37 +61,15 @@ public class App {
         System.out.println("종료 : quit");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
-        TeamDao teamDao = new TeamDao();
-        MemberDao memberDao = new MemberDao();
-        TaskDao taskDao = new TaskDao();
-        TeamMemberDao teamMemberDao = new TeamMemberDao();
+        // 기본 객체 준비
+        HashMap<String,Object> defaultBeans = new HashMap<>();
+        defaultBeans.put("java.util.Scanner", keyScan);
         
-        // 테스트용 데이터를 준비한다. 
-        prepareMemberData(memberDao);
-        prepareTeamData(teamDao, teamMemberDao);
-        
-        TeamController teamController = new TeamController(keyScan, teamDao);
-        TeamMemberController teamMemberController = new TeamMemberController(
-                keyScan, teamDao, memberDao, teamMemberDao);
-        MemberController memberController = new MemberController(
-                keyScan, memberDao);
-        BoardController boardController = new BoardController(keyScan);
-        TaskController taskController = new TaskController(
-                keyScan, teamDao, taskDao, teamMemberDao, memberDao);
-        ClassroomController classroomController = new ClassroomController(
-                keyScan);
-        
-        HashMap<String,Controller> controllerMap = 
-                new HashMap<>();
-
-        controllerMap.put("board", boardController);
-        controllerMap.put("classroom", classroomController);
-        controllerMap.put("member", memberController);
-        controllerMap.put("task", taskController);
-        controllerMap.put("team", teamController);
-        controllerMap.put("team/member", teamMemberController);
+        // 기본 객체와 함께 @Component가 붙은 클래스의 객체를 준비한다.
+        iocContainer = new ApplicationContext(
+                "bitcamp.java106.pms", defaultBeans);
         
         Console.keyScan = keyScan;
 
@@ -88,83 +89,31 @@ public class App {
             } else if (menu.equals("help")) {
                 onHelp();
             } else {
-                int slashIndex = menu.lastIndexOf("/");
-                String controllerKey = menu.substring(0, slashIndex);
-                Controller controller = controllerMap.get(controllerKey);
-                
-                if (controller != null) {
-                    controller.service(menu, option);
-                } else {
-                    System.out.println("명령어가 올바르지 않습니다.");
+                try {
+                    Controller controller = (Controller) iocContainer.getBean(menu);
+                    
+                    if (controller != null) {
+                        controller.service(menu, option);
+                    } else {
+                        System.out.println("명령어가 올바르지 않습니다.");
+                    }
+                } catch (Exception e) {
+                    if (keyScan.hasNextLine()) { 
+                        // 키보드 입력으로 남은 잔여 데이터가 있다면 읽어서 버린다.
+                        keyScan.nextLine(); 
+                    }
+                    System.out.println("작업 실행 중에 오류가 발생하였습니다.");
+                    System.out.println("명령을 다시 실행해주세요!");
                 }
             }
 
             System.out.println(); 
         }
     }
-    static void prepareMemberData(MemberDao memberDao) {
-        Member member = new Member();
-        member.setId("aaa");
-        member.setEmail("aaa@test.com");
-        member.setPassword("1111");
-        
-        memberDao.insert(member);
-        
-        member = new Member();
-        member.setId("bbb");
-        member.setEmail("bbb@test.com");
-        member.setPassword("1111");
-        
-        memberDao.insert(member);
-        
-        member = new Member();
-        member.setId("ccc");
-        member.setEmail("ccc@test.com");
-        member.setPassword("1111");
-        
-        memberDao.insert(member);
-        
-        member = new Member();
-        member.setId("ddd");
-        member.setEmail("ddd@test.com");
-        member.setPassword("1111");
-        
-        memberDao.insert(member);
-        
-        member = new Member();
-        member.setId("eee");
-        member.setEmail("eee@test.com");
-        member.setPassword("1111");
-        
-        memberDao.insert(member);
-    }
-    
-    static void prepareTeamData(
-            TeamDao teamDao, 
-            TeamMemberDao teamMemberDao) {
-        Team team = new Team();
-        team.setName("t1");
-        team.setMaxQty(5);
-        team.setStartDate(Date.valueOf("2018-1-1"));
-        team.setEndDate(Date.valueOf("2018-5-30"));
-        teamDao.insert(team);
-        teamMemberDao.addMember("t1", "aaa");
-        teamMemberDao.addMember("t1", "bbb");
-        teamMemberDao.addMember("t1", "ccc");
-        
-        team = new Team();
-        team.setName("t2");
-        team.setMaxQty(5);
-        team.setStartDate(Date.valueOf("2018-2-1"));
-        team.setEndDate(Date.valueOf("2018-6-30"));
-        teamDao.insert(team);
-        teamMemberDao.addMember("t2", "ccc");
-        teamMemberDao.addMember("t2", "ddd");
-        teamMemberDao.addMember("t2", "eee");
-        
-    }
 }
 
+//ver 25 - 예외 처리 코드 추가.
+//ver 24 - 파일 저장 기능 호출. 멤버 및 팀 데이터를 준비하는 메서드 제거.
 //ver 17 - Task 관리 기능 추가
 // ver 15 - TeamDao와 MemberDao 객체 생성. 
 //          팀 멤버를 다루는 메뉴 추가.

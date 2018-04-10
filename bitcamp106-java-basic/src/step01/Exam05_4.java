@@ -1,30 +1,25 @@
-// 정수의 리터럴(literal) 메모리에 저장하는 방법
+// 정수의 리터럴 - 메모리에 저장하는 방법
 package step01;
+
 public class Exam05_4 {
     public static void main(String[] args) {
-        System.out.println(5-3);
-        System.out.println(5+ (-3));
+        System.out.println(5 - 3);
+        System.out.println(5 + (-3));
 
-// 자바는 정수를 2의 보수 방식으로 메모리에 저장한다.
-// 부동소수점을 저장할때 가수부와 지수부를 사용한다.
-// 양의 정수값을 메모리에 저장하는 방법
-// => 100 = 0000 0000 0000 0000 0000 0000 0110 0100
-        System.out.println(100);
-        System.out.println(Integer.toBinaryString(100));
-
-
-// 음의 정수값을 메모리에 저장하는 방법
-// => -100 = 1111 1111 1111 1111 1111 1111 1001 1100
-        System.out.println(-100);
-        System.out.println(Integer.toBinaryString(-100));
     }
 }
+// 결론
+// => 자바에서는 정수를 저장할 때 2의 보수 방법을 사용한다.
+// => 부동소수점을 저장할 때는
+//    가수부는 'Sign-Magnitude 방식'으로 저장하고,
+//    지수부는 'Excess-K 방식'으로 저장한다. 
+
 
 // # 정수를 2진수로 표현하는 방법
 // 1) 부호-크기/절대값(Sign-Magnitude)
 // - 맨 왼쪽 1비트를 부호 비트로 사용한다.
 //   양수는 '0', 음수는 '1'로 설정한다.
-// - 나머지 비트는 절대값(magnitude)을 저장한다.
+// - 나머지 비트는 절대값(magnitude)으로 저장한다.
 //   예) 8비트 = 1비트(부호) + 7비트(절대값)
 // - +24와 -24를 8비트를 사용하여 2진수로 표현해 보자
 //   +24 => |+24| = 24 ---> 0001 1000

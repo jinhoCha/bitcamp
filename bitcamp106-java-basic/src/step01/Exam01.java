@@ -7,12 +7,7 @@ package step01;
 
 public class Exam01 {
     public static void main(String[] args) {
-        int a = 5;
         System.out.println("src/step01/Exam01");
-        System.out.println(a++);
-        System.out.println(++a);
-        System.out.println(a);
-        
     }
 }
 

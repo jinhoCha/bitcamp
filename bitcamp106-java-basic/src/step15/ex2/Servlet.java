@@ -1,12 +1,10 @@
-//인터페이스 문법을 사용하여 호출 규칙 정의
-
+// 인터페이스 문법을 사용하여 호출 규칙 정의
 package step15.ex2;
 
-public interface  Servlet {
-    
+public interface Servlet {
     void init();
     void service();
     void destroy();
-    String getServeletInfo();
-    String getServeletConfig();
+    String getServletInfo();
+    String getServletConfig();
 }

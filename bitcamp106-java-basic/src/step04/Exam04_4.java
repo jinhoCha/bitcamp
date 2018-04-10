@@ -1,35 +1,40 @@
-// 비트 이동 연산자 : 응용 1
+// 비트 이동 연산자 : 응용 I
 package step04;
 
 public class Exam04_4 {
-public static void main(String[] args) {
-    
-    int i = 0x27a130ff;
-    int a,b,c,d;
+    public static void main(String[] args) {
+        int i = 0x27a130ff;
+        int a, b, c, d;
+        System.out.println(Integer.toHexString(i));
+        
+        // i 변수에 들어있는 값을 순서대로 1바이트씩 짤라서 
+        // a,b,c,d 변수에 넣은 다음 각 변수의 값을 16진수로 출력하라!
 
-    
-    System.out.println(Integer.toHexString(i));
-    // i변수에 들어있는 값을 1바이트씩 짤라서 16진수로 출력하라.
+        // 27a130ff = 00100111_10100001_00110000_11111111
+        a = i >> 24; // 00000000_00000000_00000000_00100111
+        b = (i >> 16) & 0xff; 
+        //   00000000_00000000_00100111_10100001
+        // & 00000000_00000000_00000000_11111111
+        // --------------------------------------
+        //   00000000_00000000_00000000_10100001
 
-    // 27a130ff == 00100111_10100001_00110000_1111_1111
-    a = i >> 24 ; // 00000000_00000000_00000000_00100111;
-    b = (i >> 16)  & 0xff;
-                 //  00000000_00000000_00100111_10100001;
-                 //& 00000000_00000000_00000000_11111111; 엔드를써서 1바이트만출력
-    c = (i >> 8) & 0xff;
-                
-    d = i & 0xff;
-                //  00000000_00000000_00100111_11111111;
-                 //& 00000000_00000000_00000000_11111111; 엔드를써서 1바이트만출력
-            
-    System.out.println(Integer.toHexString(a)); // 27
-    System.out.println(Integer.toHexString(b)); // a1
-    System.out.println(Integer.toHexString(c)); // 30
-    System.out.println(Integer.toHexString(d)); // ff
+        c = (i >> 8) & 0xff;
+        //   00000000_00100111_10100001_00110000
+        // & 00000000_00000000_00000000_11111111
+        // --------------------------------------
+        //   00000000_00000000_00000000_00110000
+
+        d = i & 0xff;
+        //   00100111_10100001_00110000_11111111
+        // & 00000000_00000000_00000000_11111111
+        // --------------------------------------
+        //   00000000_00000000_00000000_11111111
+
+        System.out.println(Integer.toHexString(a));
+        System.out.println(Integer.toHexString(b));
+        System.out.println(Integer.toHexString(c));
+        System.out.println(Integer.toHexString(d));
 
 
+    }
 }
-}
-
-//오른쪽 이동
-// - 비트 이동은 곱하기 2 한것과 같은 효과를 준다.

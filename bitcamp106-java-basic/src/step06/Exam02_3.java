@@ -1,6 +1,8 @@
-// 메서드 사용후
+// 메서드 : 개념 및 기본 문법 III
 package step06;
+
 import java.util.Scanner;
+
 public class Exam02_3 {
 
     // 3) 메서드 : 리턴값(O), 파라미터(X)
@@ -13,7 +15,6 @@ public class Exam02_3 {
     static String hello() {
         // 값을 리턴하는 문법
         // return 값;
-        
         return "안녕하세요!";
     }
 
@@ -21,7 +22,7 @@ public class Exam02_3 {
 
         // hello() 메서드를 실행하고, 그 리턴 값을 변수에 담는다.
         String r = hello();
-        System.out.println(r); // 안녕하세요
+        System.out.println(r);
 
         // 메서드가 값을 리턴한다고 해서 반드시 그 값을 변수에 받아야 하는 것은 아니다.
         // 변수에 받을 지 여부는 호출하는 쪽의 마음이다.

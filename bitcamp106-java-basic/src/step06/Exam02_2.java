@@ -1,6 +1,8 @@
-// 메서드 사용후
+// 메서드 : 개념 및 기본 문법 II
 package step06;
+
 import java.util.Scanner;
+
 public class Exam02_2 {
 
     // 2) 메서드 : 리턴값(X), 파라미터(O)
@@ -55,4 +57,4 @@ public class Exam02_2 {
 // => 예) void hello(String name, int age) {...}
 //    name과 age 변수가 파라미터이다.
 //
-// 현장에서는 "아규먼트"와 "파라미터"를 구분하지 않고 사용한다.
+// 현장에서는 "아규먼트"와 "파라미터"를 구분하지 않고 사용한다. 

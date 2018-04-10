@@ -1,6 +1,8 @@
-// 메서드 사용후
+// 메서드 : 개념 및 기본 문법 IV
 package step06;
+
 import java.util.Scanner;
+
 public class Exam02_4 {
 
     // 4) 메서드 : 리턴값(O), 파라미터(O)
@@ -18,8 +20,5 @@ public class Exam02_4 {
 
         // 리턴 값을 안 받아도 된다.
         hello("임꺽정", 30); // 리턴 값은 버려진다.
-
-        String d =hello("임꺽정", 30); 
-        System.out.println(d); // 30살 임꺽정님을 환영합니다가 실행된다.
     }
 }

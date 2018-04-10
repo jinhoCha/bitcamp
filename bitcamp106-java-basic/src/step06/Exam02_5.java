@@ -1,6 +1,8 @@
-// 메서드 사용후
+// 메서드 : 가변 파라미터
 package step06;
+
 import java.util.Scanner;
+
 public class Exam02_5 {
 
     // 가변 파라미터

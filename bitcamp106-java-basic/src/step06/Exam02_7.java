@@ -1,7 +1,7 @@
-// 메서드 사용후
+// 메서드 : 가변 파라미터의 단점
 package step06;
-import java.util.Scanner;
 
+import java.util.Scanner;
 
 public class Exam02_7 {
 
