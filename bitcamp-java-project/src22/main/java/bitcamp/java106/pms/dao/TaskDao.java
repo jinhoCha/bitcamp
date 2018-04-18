@@ -20,7 +20,7 @@ public class TaskDao extends AbstractDao<Task> {
         return tasks.iterator();
     }
     
-    public int indexOf22(Object key) {
+    public int indexOf(Object key) {
         int taskNo = (Integer) key;
         for (int i = 0; i < collection.size(); i++) {
             Task task = collection.get(i);
