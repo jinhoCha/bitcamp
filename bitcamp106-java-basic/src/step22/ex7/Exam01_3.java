@@ -14,10 +14,10 @@ public class Exam01_3 {
         
         ByteArrayInputStream arrIn = new ByteArrayInputStream(buf);
         
-        //FileInputStream에 붙여서 사용했던 DataInputStream을
-        //이번에는 ByteArrayInputStream에 붙여 보자!
-        // 이렇게 플러그인처럼, 장신구처럼 그런 기능이 필요할 떄마다
-        // 붙여 사용할 수 있는 객체를 "데코레이터"라 부른다.
+        // FileInputStream에 붙여서 사용했던 DataInputStream을 
+        // 이번에는 ByteArrayInputStream에 붙여 보자!
+        // => 이렇게 플러그인처럼, 장신구처럼 해당 기능이 필요할 때 마다 
+        //    붙여 사용할 수 있는 객체를 "데코레이터(decorator)" 라 부른다.
         DataInputStream in = new DataInputStream(arrIn);
         
         Member member = new Member();

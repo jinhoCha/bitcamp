@@ -1,66 +1,61 @@
 package bitcamp.java106.pms.dao;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Iterator;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 
 import bitcamp.java106.pms.annotation.Component;
 import bitcamp.java106.pms.domain.Classroom;
 
 @Component
-public class ClassroomDao extends AbstractDao<Classroom> {
+public class ClassroomDao {
+
+    SqlSessionFactory sqlSessionFactory;
     
-    public ClassroomDao() throws Exception {
-        load();
+    public ClassroomDao(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
     }
     
-    public void load() throws Exception {
-        try (
-                ObjectInputStream in = new ObjectInputStream(
-                               new BufferedInputStream(
-                               new FileInputStream("data/classroom.data")));
-            ) {
-        
-            while (true) {
-                try {
-                    this.insert((Classroom) in.readObject());
-                } catch (Exception e) { // 데이터를 모두 읽었거나 파일 형식에 문제가 있다면,
-                    //e.printStackTrace();
-                    break; // 반복문을 나간다.
-                }
-            }
-        }
-    }
-    
-    public void save() throws Exception {
-        try (
-                ObjectOutputStream out = new ObjectOutputStream(
-                                new BufferedOutputStream(
-                                new FileOutputStream("data/classroom.data")));
-            ) {
-            Iterator<Classroom> classrooms = this.list();
-            
-            while (classrooms.hasNext()) {
-                out.writeObject(classrooms.next());
-            }
+    public int delete(int no) throws Exception {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            int count = sqlSession.delete(
+                    "bitcamp.java106.pms.dao.ClassroomDao.delete", no);
+            sqlSession.commit();
+            return count;
         } 
     }
     
-    public int indexOf(Object key) {
-        int classroomNo = (Integer) key;
-        for (int i = 0; i < collection.size(); i++) {
-            if (collection.get(i).getNo() == classroomNo) {
-                return i;
-            }
+    public List<Classroom> selectList() throws Exception {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            return sqlSession.selectList(
+                    "bitcamp.java106.pms.dao.ClassroomDao.selectList");
         }
-        return -1;
     }
+
+    public int insert(Classroom classroom) throws Exception {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            int count = sqlSession.insert(
+                    "bitcamp.java106.pms.dao.ClassroomDao.insert", classroom);
+            sqlSession.commit();
+            return count;
+        }
+    }
+
+    public int update(Classroom classroom) throws Exception {
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            int count = sqlSession.update(
+                    "bitcamp.java106.pms.dao.ClassroomDao.update", classroom);
+            sqlSession.commit();
+            return count;
+        }
+    }
+
 }
 
+//ver 33 - Mybatis 적용
+//ver 32 - DB 커넥션 풀 적용
+//ver 31 - JDBC API 적용
 //ver 24 - File I/O 적용
 //ver 23 - @Component 애노테이션을 붙인다.
 //ver 22 - 추상 클래스 AbstractDao를 상속 받는다.

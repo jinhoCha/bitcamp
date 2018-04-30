@@ -1,9 +1,6 @@
 // BufferedInputStream과 BufferedOutputStream을 사용하여 파일 복사 및 시간 측정
 package step22.ex5;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
 public class Exam03_2 {
 
     public static void main(String[] args) throws Exception {
