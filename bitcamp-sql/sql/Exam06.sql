@@ -111,3 +111,18 @@ insert into lect_appl(lano, lno, mno, rdt) values(5, 2, 100, '2017-12-7');
 insert into lect_appl(lano, lno, mno, rdt) values(6, 3, 101, '2017-10-8');
 insert into lect_appl(lano, lno, mno, rdt) values(7, 3, 102, '2017-11-9');
 insert into lect_appl(lano, lno, mno, rdt) values(8, 3, 104, '2017-11-11');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

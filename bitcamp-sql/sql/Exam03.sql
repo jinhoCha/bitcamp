@@ -1,7 +1,7 @@
 # DQL(Data Query Language)
 데이터를 조회할 때 사용하는 문법
 
-## 테스트 용
+## 테스트 용 테이블 및 데이터 준비
 ```
 create table test1 (
   no int primary key auto_increment,
@@ -23,9 +23,6 @@ insert into test1(name,class,working) values('nnn','java101','Y');
 insert into test1(name,class,working) values('ooo','java101','N'); 
 ```
 
-
-
-
 ## select
 - 테이블의 데이터를 조회할 때 사용하는 명령이다.
 ```
@@ -35,12 +32,10 @@ select * from test1;
 
 /* 특정 컬럼의 값만 조회할 때*/
 select 컬럼명,컬럼명 from 테이블;
-select no, name, working from test1;
+select no, name, tel from test1;
 
 /* 가상의 컬럼 값을 조회하기*/
-select no, concat(name,'(',class,')'), 'working' 
-from test1
-where working = 'Y';
+select no, concat(name,'(',class,')') from test1;
 ```
 
 ### 조회하는 컬럼에 별명 붙이기 
@@ -53,18 +48,14 @@ where working = 'Y';
 select 컬럼명 [as] 별명 ...
 select 
     no as num, 
-    concat(name,'(',class,')') as title, 
-    'working' as work 
-from test1
-where working = 'Y';
+    concat(name,'(',class,')') as title 
+from test1; 
 
 /* as를 생략해도 된다.*/
 select 
-    no num, 
-    concat(name,'(',class,')') title, 
-    'working' work 
-from test1
-where working = 'Y';
+    no as num, 
+    concat(name,'(',class,')') title 
+from test1; 
 ``` 
 
 ### 조회할 때 조건 지정하기
@@ -105,13 +96,17 @@ select no, name
 from test1
 where working != 'Y';
 
+select no, name
+from test1
+where working <> 'Y';
+
 /* 학생 번호가 짝수인 경우 전화 번호를 '1111'로 변경하라*/
 update test1 set 
     tel = '1111'
 where (no % 2) = 0;
 
 /* 학생 번호가 3의 배수인 경우 전화번호를 '2222'로 변경하라*/
-update test1 set
+update test16 set
   tel = '2222'
 where (no % 3) = 0;
 
@@ -125,6 +120,10 @@ where tel != null;
 select *
 from test1
 where tel is not null;
+
+select *
+from test1
+where not (tel is null);
 
 /* 전화 번호가 없는 학생만 조회하라!*/
 /* => null인지 여부를 가릴 때는 = 연산자가 아닌 is 연산자를 사용해야 한다.*/
@@ -236,16 +235,16 @@ insert into test1(title, regdt) values('mmmm', '2017-12-31');
 ```
 /* 특정 날짜의 게시글 찾기 */
 select * 
-from test18
+from test1
 where regdt = '2017-6-17';
 
 /* 특정 기간의 게시글 조회 */
 select * 
-from test18
+from test1
 where regdt between '2017-11-1' and '2017-12-31';
 
 select * 
-from test18
+from test1
 where regdt >= '2017-11-1' and regdt <= '2017-12-31';
 ```
 
@@ -261,7 +260,7 @@ select curdate();
 select curtime();
 
 /* 주어진 날짜, 시간에서 날짜만 뽑거나 시간만 뽑기 */
-select regdt, date(regdt), time(regdt) from test18;
+select regdt, date(regdt), time(regdt) from test1;
 
 /* 특정 날짜에 시,분,초,일,월,년을 추가하거나 빼기*/
 date_add(날짜데이터, interval 값 단위);
@@ -276,12 +275,12 @@ select datediff(curdate(), '2018-3-19');
 
 /* 날짜에서 특정 형식으로 값을 추출하기 */
 date_format(날짜, 형식)
-select date_format('2017-9-7', '%m/%e/%Y'); /* 09/7/2017 */
-select date_format('2017-9-7', '%M/%d/%y'); /* September/07/17 */
-select date_format('2017-9-7', '%W %w %a'); /* Thursday 4 Thu */
-select date_format('2017-9-7', '%M %b'); /* September Sep */
-select date_format('2017-9-7 13:5:45', '%p %h %H %l'); /* PM 01 13 1 */
-select date_format('2017-9-7 13:5:45', '%i %s'); /* 05 45 */
+select date_format(now(), '%m/%e/%Y'); /* 09/7/2017 */
+select date_format(now(), '%M/%d/%y'); /* September/07/17 */
+select date_format(now(), '%W %w %a'); /* Thursday 4 Thu */
+select date_format(now(), '%M %b'); /* September Sep */
+select date_format(now(), '%p %h %H %l'); /* PM 01 13 1 */
+select date_format(now(), '%i %s'); /* 05 45 */
 
 /* 문자열을 날짜 값으로 바꾸기 */
 select str_to_date('11/22/2017', '%m/%d/%Y');
@@ -292,7 +291,7 @@ select str_to_date('2017.2.12', '%Y.%m.%d');
 insert into test1 (title, regdt) values('aaaa', '2017-11-22');
 
 /* 다음 형식의 문자열을 날짜 값으로 지정할 수 없다.*/
-insert into test1(title, regdt) values('bbbb', '11/22/2017');
+insert into test1 (title, regdt) values('bbbb', '11/22/2017');
 
 /* 위 형식의 문자열을 날짜 값으로 저장하려면 str_to_date() 함수를 사용해야 한다.*/
 insert into test1 (title, regdt) 
