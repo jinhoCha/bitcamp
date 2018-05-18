@@ -24,10 +24,3 @@ public class Exam03 extends javax.servlet.GenericServlet {
         System.out.println("Exam02.service()");
     }
 }
-
-
-
-
-
-
-

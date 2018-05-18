@@ -29,7 +29,7 @@ public class Exam02 extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         // 테스트 방법:
         // http://localhost:8888/java106-web01/step05/exam02_test.html
-
+        
         response.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
@@ -40,28 +40,28 @@ public class Exam02 extends HttpServlet {
         // 2) build.gradle 에 의존 라이브러리 정보 추가
         // 3) "gradle eclipse" 실행하여 이클립스 설정 파일 갱신
         // 4) 이클립스 IDE에서 프로젝트 갱신
-
+        
         // apache-fileupload 라이브러리를 사용하여 클라이언트가 보낸 멀티파트 데이터를 추출해보자! 
-        // 1) 클라이언트가 보낸 데이터가 멀티파트 형식인지 검사한다.s
+        // 1) 클라이언트가 보낸 데이터가 멀티파트 형식인지 검사한다.
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if (!isMultipart) {
             out.println("멀티파트 형식이 아닙니다!");
             return;
         }
-
+        
         // 2) 멀티파트 데이터를 HDD에 저장할 공장 준비  
         DiskFileItemFactory factory = new DiskFileItemFactory();
-
+        
         // 3) 멀티파트 데이터 분석기에 공장 객체를 장착한다.
         // => 멀티파트 데이터 분석기가 멀티파트 데이터를 추출하면 
         //    공장객체가 파일로 만들어 HDD에 저장한다.
         ServletFileUpload upload = new ServletFileUpload(factory);
-
+        
         // 4) 멀티파트로 전송된 요청 데이터 분석하기
         Map<String,String> paramMap = new HashMap<>();
         try {
             List<FileItem> items = upload.parseRequest(request);
-
+            
             for (FileItem item : items) {
                 if (item.isFormField()) { // 일반적인 텍스트 항목일 경우,
                     // 파라미터의 한글이 깨질 경우,
@@ -99,7 +99,7 @@ public class Exam02 extends HttpServlet {
                     //    실제 경로를 알아낸다.
                     String savedPath = appEnvInfo.getRealPath("/");
                     out.println(savedPath);
-
+                    
                     // => FileItem.write(저장할 경로) 호출하여 클라이언트가 보낸 파일을 저장한다.
                     item.write(new File(savedPath + "/" + item.getName()));
                 }
@@ -109,10 +109,3 @@ public class Exam02 extends HttpServlet {
         }
     }
 }
-
-
-
-
-
-
-

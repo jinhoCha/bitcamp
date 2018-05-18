@@ -40,10 +40,3 @@ public class Exam01 extends GenericServlet {
     }
 }
 
-
-
-
-
-
-
-

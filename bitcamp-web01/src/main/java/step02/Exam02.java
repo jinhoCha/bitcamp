@@ -24,10 +24,3 @@ public class Exam02 extends GenericServlet {
         out.println("step02.Exam02.sevice()");
     }
 }
-
-
-
-
-
-
-

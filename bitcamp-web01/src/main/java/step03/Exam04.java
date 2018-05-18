@@ -66,9 +66,3 @@ public class Exam04 extends GenericServlet {
         out.printf("나이=%d\n", age);
     }
 }
-
-
-
-
-
-
