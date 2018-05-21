@@ -2,7 +2,6 @@ package bitcamp.java106.pms.servlet.team;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,11 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import bitcamp.java106.pms.dao.TeamDao;
-import bitcamp.java106.pms.dao.TeamMemberDao;
-import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.servlet.InitServlet;
+import bitcamp.java106.pms.support.WebApplicationContextUtils;
 
 @SuppressWarnings("serial")
 @WebServlet("/team/view")
@@ -25,7 +24,10 @@ public class TeamViewServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-        teamDao = InitServlet.getApplicationContext().getBean(TeamDao.class);
+        ApplicationContext iocContainer = 
+                WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
+        
+        teamDao = iocContainer.getBean(TeamDao.class);
     }
     
     @Override
@@ -33,7 +35,6 @@ public class TeamViewServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
 
-        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         
         response.setContentType("text/html;charset=UTF-8");
