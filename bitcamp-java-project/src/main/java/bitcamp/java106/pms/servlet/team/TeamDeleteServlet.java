@@ -1,8 +1,8 @@
 package bitcamp.java106.pms.servlet.team;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,39 +37,28 @@ public class TeamDeleteServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         
+        
         try {
             teamMemberDao.delete(name);
             taskDao.deleteByTeam(name);
             int count = teamDao.delete(name);
-    
             if (count == 0) {
-                throw new Exception("해당 팀이 없습니다.");
-            } 
+                throw new Exception ("해당 팀이 없습니다.");
+            }
             response.sendRedirect("list");
-        } catch (Exception e) {
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
             
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta charset='UTF-8'>");
-            out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-            out.println("<title>팀 삭제</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>팀 삭제 결과</h1>");
-            out.println("<p>삭제 실패!</p>");
-            out.println("<pre>");
-            e.printStackTrace(out);
-            out.println("</pre>");
-            out.println("</body>");
-            out.println("</html>");
+        } catch (Exception e) {
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
+            request.setAttribute("error", e);
+            request.setAttribute("title", "팀 삭제 실패!");
+            요청배달자.forward(request, response);
         }
     }
     
 }
 
+//ver 39 - forward 적용
+//ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경

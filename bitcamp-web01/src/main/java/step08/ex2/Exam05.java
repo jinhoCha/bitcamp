@@ -24,7 +24,7 @@ public class Exam05 extends HttpServlet {
         if(!op.equals("/")) {
             // +연산자가 아니라면 다음 서블릿에게 실행을 위임한다.
             RequestDispatcher  요청배달자 =request.getRequestDispatcher("/step08/ex2/exam02");
-            요청배달자.forward(request, response);
+            요청배달자.forward(request, response); 
             return;
         }
 

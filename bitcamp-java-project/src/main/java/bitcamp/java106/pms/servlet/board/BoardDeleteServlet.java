@@ -1,8 +1,8 @@
 package bitcamp.java106.pms.servlet.board;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,41 +28,26 @@ public class BoardDeleteServlet extends HttpServlet {
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
         
-        
-        
         try {
             int no = Integer.parseInt(request.getParameter("no"));
             int count = boardDao.delete(no);
-            
             if (count == 0) {
                 throw new Exception("해당 게시물이 없습니다.");
-            } 
+            }
             response.sendRedirect("list");
             
         } catch (Exception e) {
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta charset='UTF-8'>");
-            out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-            out.println("<title>게시물 삭제</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>게시물 삭제 실패</h1>");
-            out.println("<p>삭제 실패!</p>");
-            out.println("<pre>");
-            e.printStackTrace(out);
-            out.println("</pre>");
-            out.println("</body>");
-            out.println("</html>");
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
+            request.setAttribute("error", e);
+            request.setAttribute("title", "게시물 삭제 실패!");
+            요청배달자.forward(request, response);
         }
     }
     
 }
 
+//ver 39 - forward 적용
+//ver 38 - redirect 적용
 //ver 37 - BoardDeleteController를 서블릿으로 변경
 //         결과를 HTML로 출력
 //ver 31 - JDBC API가 적용된 DAO 사용

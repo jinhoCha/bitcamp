@@ -1,8 +1,8 @@
 package bitcamp.java106.pms.servlet.member;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,39 +29,26 @@ public class MemberDeleteServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         
         String id = request.getParameter("id");
-        
-        
+
         try {
             int count = memberDao.delete(id);
-    
             if (count == 0) {
                 throw new Exception("해당 회원이 없습니다.");
             }
             response.sendRedirect("list");
-        } catch (Exception e) {
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
             
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta charset='UTF-8'>");
-            out.println("<meta http-equiv='Refresh' content='1;url=list'>");
-            out.println("<title>게시물 삭제</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>게시물 삭제 결과</h1>");
-            out.println("<p>삭제 실패!</p>");
-            out.println("<pre>");
-            e.printStackTrace(out);
-            out.println("</pre>");
-            out.println("</body>");
-            out.println("</html>");
+        } catch (Exception e) {
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
+            request.setAttribute("error", e);
+            request.setAttribute("title", "회원 삭제 실패!");
+            요청배달자.forward(request, response);
         }
     }
     
 }
 
+//ver 39 - forward 적용
+//ver 38 - redirect 적용
 //ver 31 - JDBC API가 적용된 DAO 사용
 //ver 28 - 네트워크 버전으로 변경
 //ver 26 - MemberController에서 delete() 메서드를 추출하여 클래스로 정의.

@@ -32,6 +32,7 @@ public class ClassroomDao {
                     "bitcamp.java106.pms.dao.ClassroomDao.selectList");
         }
     }
+    
     public Classroom selectOne(int no) throws Exception {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
             return sqlSession.selectOne(
