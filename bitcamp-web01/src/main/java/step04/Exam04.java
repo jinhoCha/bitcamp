@@ -61,3 +61,4 @@ public class Exam04 extends HttpServlet {
         out.printf("age=%d\n", age);
     }
 }
+

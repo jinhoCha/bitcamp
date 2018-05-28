@@ -4,7 +4,6 @@ package step05;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,53 +28,55 @@ public class Exam04 extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         // 테스트 방법:
         // http://localhost:8888/java106-web01/step05/exam04_test.html
-
+        
         response.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-        if (!isMultipart) {
-            out.println("멀티파트 형식이 아닙니다!");
-            return;
-        }
-
         DiskFileItemFactory factory = new DiskFileItemFactory();
-
         ServletFileUpload upload = new ServletFileUpload(factory);
-
+        
         try {
-            Map<String, List<FileItem>>  paramMap = upload.parseParameterMap(request);
-
-            out.printf("name=%s\n",paramMap.get("name").get(0).getString("UTF-8"));
-            out.printf("age=%s\n",paramMap.get("age").get(0).getString());
-
+            Map<String,List<FileItem>> paramMap = upload.parseParameterMap(request);
+            
+            out.printf("name=%s\n", paramMap.get("name").get(0).getString("UTF-8"));
+            out.printf("age=%s\n", paramMap.get("age").get(0).getString());
+            
             FileItem photo = paramMap.get("photo").get(0);
             String filename = newFilename(photo.getName());
-            out.printf("pthoto=%s\n", filename);
-
+            out.printf("photo=%s\n",  filename);
+            
+            // 업로드 파일을 저장한다.
             ServletContext appEnvInfo = request.getServletContext();
             String savedPath = appEnvInfo.getRealPath("/");
             out.println(savedPath);
-            photo.write(new File(savedPath + "/" + newFilename(photo.getName())));
-
-
+            photo.write(new File(savedPath + "/" + filename));
+            
         } catch (Exception e) {
             out.println("멀티파트 데이터 분석 중 오류 발생!");
         }
     }
+    
     int count = 0;
     private String newFilename(String originFilename) {
         // 파일 확장자 추출하기
-        // 예)test.ok.png
+        // 예) test.ok.png
         int lastIndex = originFilename.lastIndexOf(".");
-        String extName = originFilename.substring(lastIndex);
-        if(lastIndex >= 0) {
+        String extName = "";
+        if (lastIndex >= 0) {
             extName = originFilename.substring(lastIndex);
         }
-        // 파일명: [현재 업로드한 시각의 밀리초]-[카운트].[확장자]
-        return String.format("%d-%d.%s", 
+        
+        // 파일명: [현재업로드한시각의 밀리초]-[카운트].[확장자]
+        return String.format("%d-%d%s", 
                 System.currentTimeMillis(),
                 ++count,
                 extName);
     }
 }
+
+
+
+
+
+
+

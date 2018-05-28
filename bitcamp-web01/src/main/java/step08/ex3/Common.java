@@ -1,4 +1,4 @@
-// 자동으로 페이지를 이동하는 방법 - Refresh(HTML 페이지에 삽입)
+// 다른 서블릿의 작업을 포함하기 - include
 package step08.ex3;
 
 import java.io.IOException;
@@ -17,19 +17,25 @@ public class Common extends HttpServlet {
     protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-       
-        PrintWriter out = response.getWriter();
         
-       out.println("<style>");
-       out.println("div#header {");
-       out.println("background-color: blue;");
-       out.println("color: white;");
-       out.println("font-weight:bold;");
-       out.println("}");
-               out.println("div#footer {");
-               out.println("background-color: yellow;");
-           
-               out.println("}");
-               out.println("<style>");
+        PrintWriter out = response.getWriter();
+        out.println("<style>");
+        out.println("div#header {");
+        out.println("    background-color: blue;");
+        out.println("    color: white;");
+        out.println("    font-weight: bold;");
+        out.println("}");
+        
+        out.println("div#footer {");
+        out.println("    background-color: yellow;");
+        out.println("}");
+        out.println("</style>");
     }
 }
+
+
+
+
+
+
+

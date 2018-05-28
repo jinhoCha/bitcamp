@@ -40,3 +40,10 @@ public class Exam02 extends HttpServlet {
         out.println("</html>");
     }
 }
+
+
+
+
+
+
+

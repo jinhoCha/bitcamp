@@ -17,3 +17,9 @@ public class Exam04 extends HttpServlet {
     // 어떻게? ServletException 예외를 던진다.
 }
 
+
+
+
+
+
+

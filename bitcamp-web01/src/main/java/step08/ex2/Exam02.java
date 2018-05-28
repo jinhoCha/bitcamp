@@ -1,4 +1,4 @@
-// 자동으로 페이지를 이동하는 방법 - Refresh(HTML 페이지에 삽입)
+// 실행 위임 하는 방법 - forward
 package step08.ex2;
 
 import java.io.IOException;
@@ -18,22 +18,23 @@ public class Exam02 extends HttpServlet {
     protected void doGet(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-
+        
         String op = request.getParameter("op");
-
-        if(!op.equals("-")) {
-            // +연산자가 아니라면 다음 서블릿에게 실행을 위임한다.
-            RequestDispatcher  요청배달자 =request.getRequestDispatcher("/step08/ex2/exam03");
+        
+        if (!op.equals("-")) {
+            // + 연산자가 아니라면 다음 서블릿에게 실행을 위임한다.
+            RequestDispatcher 요청배달자 = request.getRequestDispatcher(
+                    "/step08/ex2/exam03");
             요청배달자.forward(request, response);
             return;
         }
-
-        int a =Integer.parseInt(request.getParameter("a"));
-        int b =Integer.parseInt(request.getParameter("b"));
-
+        
+        int a = Integer.parseInt(request.getParameter("a"));
+        int b = Integer.parseInt(request.getParameter("b"));
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        
         out.println("<!DOCTYPE html>");
         out.println("<html>");
         out.println("<head>");
@@ -42,8 +43,15 @@ public class Exam02 extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>exam02</h1>");
-        out.printf("<p>%d + %d = %d</p>\n",a,b,(a-b));
+        out.printf("<p>%d - %d = %d</p>\n", a, b, (a - b));
         out.println("</body>");
         out.println("</html>");
     }
 }
+
+
+
+
+
+
+

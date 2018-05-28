@@ -4,7 +4,6 @@ package step05;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,33 +32,33 @@ public class Exam03 extends HttpServlet {
         response.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-        if (!isMultipart) {
-            out.println("멀티파트 형식이 아닙니다!");
-            return;
-        }
-        
         DiskFileItemFactory factory = new DiskFileItemFactory();
-        
         ServletFileUpload upload = new ServletFileUpload(factory);
         
         try {
-            Map<String, List<FileItem>>  paramMap = upload.parseParameterMap(request);
+            Map<String,List<FileItem>> paramMap = upload.parseParameterMap(request);
             
-            out.printf("name=%s\n",paramMap.get("name").get(0).getString("UTF-8"));
-            out.printf("age=%s\n",paramMap.get("age").get(0).getString());
+            out.printf("name=%s\n", paramMap.get("name").get(0).getString("UTF-8"));
+            out.printf("age=%s\n", paramMap.get("age").get(0).getString());
             
             FileItem photo = paramMap.get("photo").get(0);
-            out.printf("pthoto=%s\n",photo.getName());
+            out.printf("photo=%s\n",  photo.getName());
             
-                    ServletContext appEnvInfo = request.getServletContext();
-                    String savedPath = appEnvInfo.getRealPath("/");
-                    out.println(savedPath);
-                    photo.write(new File(savedPath + "/" + photo.getName()));
-                
+            // 업로드 파일을 저장한다.
+            ServletContext appEnvInfo = request.getServletContext();
+            String savedPath = appEnvInfo.getRealPath("/");
+            out.println(savedPath);
+            photo.write(new File(savedPath + "/" + photo.getName()));
             
         } catch (Exception e) {
             out.println("멀티파트 데이터 분석 중 오류 발생!");
         }
     }
 }
+
+
+
+
+
+
+

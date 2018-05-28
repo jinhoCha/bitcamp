@@ -19,3 +19,10 @@ public class Exam02 extends GenericServlet {
         System.out.println("Exam02.service()");
     }
 }
+
+
+
+
+
+
+

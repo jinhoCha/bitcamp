@@ -34,3 +34,10 @@ public class Exam01 extends GenericServlet {
         out.println("step02.Exam01.sevice()");
     }
 }
+
+
+
+
+
+
+

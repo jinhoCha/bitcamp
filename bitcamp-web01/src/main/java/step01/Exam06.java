@@ -22,3 +22,10 @@ public class Exam06 extends javax.servlet.http.HttpServlet {
         out.println("GET 요청하셨네요.^^");
     }
 }
+
+
+
+
+
+
+

@@ -30,38 +30,20 @@ public class Exam03 extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>exam03 실행!</h1>");
-        // init() 파라미터로 받은 ServletConfig 객체를 이용하여
+        
+        // init()의 파라미터로 받은 ServletConfig 객체를 이용하여
         // web.xml 파일에 설정된 init-param 태그의 값을 가져올 수 있다.
         ServletConfig config = this.getServletConfig();
         String name = config.getInitParameter("name");
         String age = config.getInitParameter("age");
-        out.printf("<p>name=%s, age=%s</p>", name, age);
+        
+        out.printf("<p>name=%s, age=%s</p>\n", name, age);
+        
         out.println("</body>");
         out.println("</html>");
-        
-    
-
-        
-        /* 실행결과
-              ------------ 서버실행전 ----------------
-                Filter1.init
-                Filter2.init
-                step07.Exam02() 호출!
-                step07.Exam02.init() 호출!
-                
-             ------------ 서버실행후 ----------------
-                 
-                Fliter1.doFilter() : before
-                /step09/ex1/exam03 실행
-                Fliter1.doFilter() : after
-          
-             web.xml에서 값을꺼내오고 Filter3에서 getInitParameter
-          
-          
-          
-         */
     }
 }
+
 
 
 

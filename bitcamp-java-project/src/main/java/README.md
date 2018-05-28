@@ -1,11 +1,9 @@
 # 변경 내역
-- BoardAddServlet, BoardUpdateServlet, BoardDeleteServlet 변경
-- ClassroomAddServlet, ClassroomUpdateServlet, ClassroomDeleteServlet 변경
-- MemberAddServlet, MemberUpdateServlet, MemberDeleteServlet 변경
-- TeamAddServlet, TeamUpdateServlet, TeamDeleteServlet 변경
-- TeamMemberAddServlet, TeamMemberDeleteServlet 변경
-- TaskAddServlet, TaskUpdateServlet, TaskDeleteServlet, TaskListServlet 변경
-
-
+- auth/form.jsp 변경
+- board/list.jsp, board/view.jsp 변경
+- classroom/list.jsp, classroom/view.jsp 변경
+- member/list.jsp, member/view.jsp 변경
+- team/list.jsp, team/view.jsp, team/member/list.jsp 변경
+- task/list.jsp, task/view.jsp 변경
 
 

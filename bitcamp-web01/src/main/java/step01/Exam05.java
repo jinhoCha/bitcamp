@@ -31,3 +31,10 @@ public class Exam05 extends HttpServlet {
         out.println("GET 요청하셨네요.^^");
     }
 }
+
+
+
+
+
+
+

@@ -2,7 +2,6 @@ package bitcamp.java106.pms.servlet.member;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +23,8 @@ public class MemberUpdateServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         ApplicationContext iocContainer = 
-                WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
-        
+                WebApplicationContextUtils.getWebApplicationContext(
+                        this.getServletContext()); 
         memberDao = iocContainer.getBean(MemberDao.class);
     }
 
@@ -33,7 +32,6 @@ public class MemberUpdateServlet extends HttpServlet {
     protected void doPost(
             HttpServletRequest request, 
             HttpServletResponse response) throws ServletException, IOException {
-        
         
         try {
             Member member = new Member();
@@ -48,15 +46,17 @@ public class MemberUpdateServlet extends HttpServlet {
             response.sendRedirect("list");
             
         } catch (Exception e) {
-            RequestDispatcher 요청배달자 = request.getRequestDispatcher("/error");
             request.setAttribute("error", e);
             request.setAttribute("title", "회원 변경 실패!");
-            요청배달자.forward(request, response);
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
     
 }
 
+//ver 42 - JSP 적용
+//ver 40 - CharacterEncodingFilter 필터 적용.
+//         request.setCharacterEncoding("UTF-8") 제거
 //ver 39 - forward 적용
 //ver 38 - redirect 적용
 //ver 37 - 컨트롤러를 서블릿으로 변경
