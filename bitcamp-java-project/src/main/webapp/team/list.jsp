@@ -16,15 +16,13 @@
 <tr>
     <th>팀명</th><th>최대인원</th><th>기간</th>
 </tr>
-
 <c:forEach items="${list}" var="team">
 <tr>
-    <td><a href='view?name=${team.name}'>${team.name}</a></td>
+    <td><a href='view.do?name=${team.name}'>${team.name}</a></td>
     <td>${team.maxQty}</td>
     <td>${team.startDate}~${team.endDate}</td>
 </tr>
 </c:forEach>
-
 </table>
 </body>
 </html>

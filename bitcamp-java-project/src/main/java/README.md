@@ -1,9 +1,8 @@
 # 변경 내역
-- auth/form.jsp 변경
-- board/list.jsp, board/view.jsp 변경
-- classroom/list.jsp, classroom/view.jsp 변경
-- member/list.jsp, member/view.jsp 변경
-- team/list.jsp, team/view.jsp, team/member/list.jsp 변경
-- task/list.jsp, task/view.jsp 변경
-
+- @RequestMapping 애노테이션 추가
+- 모든 페이지 컨트롤러에 대해 클라이언트 요청을 처리하는 메서드에 @RequestMapping을 붙인다.
+- 페이지 컨트롤러는 PageController 인터페이스를 구현하지 않는다.
+- PageController 삭제
+- DispatcherServlet 변경
+ 
 
