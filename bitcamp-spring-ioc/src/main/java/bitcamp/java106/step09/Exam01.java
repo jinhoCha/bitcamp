@@ -1,4 +1,4 @@
-// 객체 자동 생성 - @Component 애노테이션 
+// 객체 자동 생성 - @Component 애노테이션
 package bitcamp.java106.step09;
 
 import org.springframework.context.ApplicationContext;
@@ -15,8 +15,8 @@ public class Exam01 {
         BeanUtils.printBeanNames(iocContainer);
         
         System.out.println(iocContainer.getBean("car"));
-        
     }
+
 }
 
 

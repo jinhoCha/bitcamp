@@ -5,15 +5,12 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     
-    <!-- 팩토리 메서드를 통해 객체를 만들기 -->
-    
     <bean id="c1" class="bitcamp.java106.step08.Car">
-        <property name ="model" value="티코"/>
-        <property name ="maker" value="비트자동차"/>
-        <property name ="cc" value="890"/>
-        <property name ="auto" value="true"/>
-        
-        <!-- 의존 객체 주입  -->
+        <property name="model" value="티코"/>
+        <property name="maker" value="비트자동차"/>
+        <property name="cc" value="890"/>
+        <property name="auto" value="true"/>
+        <!-- 의존 객체 주입 -->
         <property name="engine" ref="e1"/>
     </bean>
     
@@ -22,8 +19,7 @@
         <property name="valve" value="16"/>
         <property name="cylinder" value="4"/>
     </bean>
-    </beans>
-    
+</beans>
 
 
 

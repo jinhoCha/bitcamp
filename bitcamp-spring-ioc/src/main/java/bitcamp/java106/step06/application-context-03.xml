@@ -6,26 +6,25 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     
     <!-- 팩토리 메서드를 통해 객체를 만들기 : 인스턴스 메서드 호출 -->
+    <bean id="carFactory" class="bitcamp.java106.step06.CarFactory2"/>
     
-    <bean id="carfactory" class="bitcamp.java106.step06.CarFactory2">
-    </bean>
-    
-    <!-- 자바 코드 : 
-        CarFactroy2 carFactory = new CarFactory2();
-        Object obj = carFactory.create("SM5");
-        objPool.put("c1", obj);
+    <!-- 자바 코드:
+            CarFactory2 carFactory = new CarFactory2();
+            Object obj = carFactory.create("SM5");
+            objPool.put("c1", obj);
      -->
-    <bean id="c1" factory-bean="carfactory"
+    <bean id="c1" factory-bean="carFactory"
           factory-method="create">
         <constructor-arg value="SM5"/>
     </bean>
     <!--
-        속성:     factory-bean="공장역할을 수행하는 객체이름"
+        속성:
+            factory-bean="공장역할을 수행하는 객체이름"
             factory-method="인스턴스 메서드 이름"
-            =>factory-bean 속성을 설정하면 factory-method는 스태틱 메서드가 아니라
-            인스턴스 메서드를 가리키게 된다.
-            
--->          
+            => factory-bean 속성을 설정하면 factory-method는 스태틱 메서드가 아니라 
+               인스턴스 메서드를 가리키게 된다.
+     -->
+    
 </beans>
 
 

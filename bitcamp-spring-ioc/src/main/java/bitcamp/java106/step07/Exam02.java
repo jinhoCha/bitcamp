@@ -1,4 +1,4 @@
-// 프로퍼티 에디터 - String ==> java.sql.Date로 변환
+// 프로퍼티 에디터 - String ==> java.sql.Date ; 변환기 없이 처리하기
 package bitcamp.java106.step07;
 
 import org.springframework.context.ApplicationContext;
@@ -13,8 +13,8 @@ public class Exam02 {
                 "bitcamp/java106/step07/application-context-02.xml");
         
         System.out.println(iocContainer.getBean("c1"));
-        
     }
+
 }
 
 

@@ -1,5 +1,3 @@
-// 의존 객체 주입 자동화하기 - 필수의존객체와 선택 의존 객체
-
 package bitcamp.java106.step08;
 
 import java.sql.Date;
@@ -7,37 +5,45 @@ import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-
-
 public class Car6 {
     String model;
     String maker;
-    Date createdDate;
-    boolean auto;
     int cc;
-  
-   @Autowired
-   @Qualifier("e2") // 의존 객체가 여러 개 있을 경우, 주입할 의존 객체의 이름을 지정하라!!
-   //@Qualifier(value="e2") 위에 처럼 한개만 넣을경우 생략해도 된다.
-                   // @Qualifier
-   Engine engine;
+    boolean auto;
+    Date createdDate;
+    
+    @Autowired 
+    @Qualifier("e2") // 의존 객체가 여러 개 있을 경우, 주입할 의존 객체의 이름을 지정하라!
+                     // 주의!
+                     // @Qualifier 애노테이션을 처리할 BeanPostProcessor를 등록해야 한다.
+    Engine engine;
     
     @Override
     public String toString() {
-        return "Car [model=" + model + ", maker=" + maker + ", createdDate=" + createdDate + ", auto=" + auto + ", cc="
-                + cc + ", engine=" + engine + "]";
+        return "Car [model=" + model + ", maker=" + maker + ", cc=" + cc + ", auto=" + auto + ", createdDate="
+                + createdDate + ", engine=" + engine + "]";
     }
-
     public Engine getEngine() {
         return engine;
     }
     
-    
     public void setEngine(Engine engine) {
-        this.engine = engine;
         System.out.println("Car.setEngine()");
+        this.engine = engine;
     }
-
+    
+    public boolean isAuto() {
+        return auto;
+    }
+    public void setAuto(boolean auto) {
+        this.auto = auto;
+    }
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
     public String getModel() {
         return model;
     }
@@ -50,23 +56,12 @@ public class Car6 {
     public void setMaker(String maker) {
         this.maker = maker;
     }
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-    public boolean isAuto() {
-        return auto;
-    }
-    public void setAuto(boolean auto) {
-        this.auto = auto;
-    }
     public int getCc() {
         return cc;
     }
     public void setCc(int cc) {
         this.cc = cc;
     }
-
+    
+    
 }

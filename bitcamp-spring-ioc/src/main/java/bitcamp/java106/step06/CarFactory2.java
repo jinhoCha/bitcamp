@@ -1,5 +1,3 @@
-
-
 package bitcamp.java106.step06;
 
 public class CarFactory2 {

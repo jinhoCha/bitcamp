@@ -1,8 +1,7 @@
 # 변경 내역
-- @RequestMapping 애노테이션 추가
-- 모든 페이지 컨트롤러에 대해 클라이언트 요청을 처리하는 메서드에 @RequestMapping을 붙인다.
-- 페이지 컨트롤러는 PageController 인터페이스를 구현하지 않는다.
-- PageController 삭제
-- DispatcherServlet 변경
- 
-
+- build.gradle 변경
+- DispatcherServlet 삭제
+- CharacterEncodingFilter 삭제
+- web.xml 변경
+- RequestMapping, RequestParam 애노테이션 삭제
+- 페이지 컨트롤러 변경

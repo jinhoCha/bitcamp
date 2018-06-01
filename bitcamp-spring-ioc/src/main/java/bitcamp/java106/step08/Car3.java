@@ -4,37 +4,47 @@ import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
-// 의존객체 Engine 주입 - 인스턴스 변수에 @AutoWired를 붙여도 된다.
+// 의존 객체 Engine 주입 - 인스턴스 변수에 @Autowired를 붙여도 된다.
 public class Car3 {
     String model;
     String maker;
-    Date createdDate;
-    boolean auto;
     int cc;
-    @Autowired Engine engine; // 인스턴스 변수 앞에 붙인다.
+    boolean auto;
+    Date createdDate;
+    
+    @Autowired Engine engine;
     
     public Car3() {
-        System.out.println("Car3()");  // 생성사자가 호출될때 Car문구를 뛰움
+        System.out.println("Car3()");
     }
     
     
     @Override
     public String toString() {
-        return "Car [model=" + model + ", maker=" + maker + ", createdDate=" + createdDate + ", auto=" + auto + ", cc="
-                + cc + ", engine=" + engine + "]";
+        return "Car [model=" + model + ", maker=" + maker + ", cc=" + cc + ", auto=" + auto + ", createdDate="
+                + createdDate + ", engine=" + engine + "]";
     }
-
     public Engine getEngine() {
         return engine;
     }
     
-    
     public void setEngine(Engine engine) {
-        this.engine = engine;
         System.out.println("Car.setEngine()");
+        this.engine = engine;
     }
-
+    
+    public boolean isAuto() {
+        return auto;
+    }
+    public void setAuto(boolean auto) {
+        this.auto = auto;
+    }
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
     public String getModel() {
         return model;
     }
@@ -47,23 +57,12 @@ public class Car3 {
     public void setMaker(String maker) {
         this.maker = maker;
     }
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-    public boolean isAuto() {
-        return auto;
-    }
-    public void setAuto(boolean auto) {
-        this.auto = auto;
-    }
     public int getCc() {
         return cc;
     }
     public void setCc(int cc) {
         this.cc = cc;
     }
-
+    
+    
 }
