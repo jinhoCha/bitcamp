@@ -7,7 +7,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.FactoryBean;
 
-public class SqlSessionFactoryFactoryBean implements FactoryBean<SqlSessionFactory> {
+public class SqlSessionFactoryFactoryBean 
+        implements FactoryBean<SqlSessionFactory> {
 
     String configLocation;
     
@@ -17,16 +18,12 @@ public class SqlSessionFactoryFactoryBean implements FactoryBean<SqlSessionFacto
     
     @Override
     public SqlSessionFactory getObject() throws Exception {
-       InputStream in = Resources.getResourceAsStream(configLocation);
-       return new SqlSessionFactoryBuilder().build(in);
+        InputStream in = Resources.getResourceAsStream(configLocation);
+        return new SqlSessionFactoryBuilder().build(in);
     }
 
     @Override
     public Class<?> getObjectType() {
-
         return SqlSessionFactory.class;
     }
-
-
-
 }

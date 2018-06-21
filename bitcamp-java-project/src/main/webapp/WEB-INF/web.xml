@@ -52,10 +52,13 @@
             <param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+        <multipart-config>
+            <max-file-size>5000000</max-file-size>
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
     
     

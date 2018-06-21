@@ -12,11 +12,10 @@
 
 <!-- Mybatis SqlSessionFactory 준비하기 -->
     <bean id="sqlSessionFactory"
-            class="bitcamp.java106.step12.ex2.SqlSessionFactoryFactoryBean">
-            <property name="configLocation"
-                      value="bitcamp/java106/step12/ex2/mybatis-config.xml"/>
-                      
-            </bean>
+          class="bitcamp.java106.step12.ex2.SqlSessionFactoryFactoryBean">
+      <property name="configLocation" 
+                value="bitcamp/java106/step12/ex2/mybatis-config.xml"/>
+    </bean>
 </beans>
 
 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex02</title>
+</head>
+<body>
+<h1>변수 - 변수와 블록 </h1>
+<script>
+"use strict"
+
+var v1 = "홍길동";
+
+function f1(){
+	
+	var v1 = "임꺽정"; 
+    var v2 = 100; 
+    console.log("f1():", v1,v2);
+}
+ f1();
+ console.log(" => :",v1,v2);
+ 
+ 
+ /* 실행결과
+  f1(): 임꺽정 100                     //f1이 출력된다.
+  exam12.html:19 Uncaught ReferenceError: v1 is not defined 
+    at exam12.html:19  // console.log(" => :",v1,v2); ===>21번째줄이 출력안된다.
+ */
+ </script>
+ <script>
+ "use strict"
+ 
+ var v1 = "홍길동";
+ function f2(){
+	    // 자바스크립트는 일반 블록에 선언된 변수도 글로벌 변수로 간주한다.
+	    var v1 = "임꺽정"; // f1() 함수에서만 사용되는 로컬 변수이다.
+	    var v2 = 100; // f1() 함수에서만 사용되는 로컬 변수이다.
+	    console.log("f2():", v1,v2);
+	    //로컬 변수는 함수 호출이 끝나면 제거된다.
+	    //왜? 스택 메모리에서 관리하기 떄문이다.
+	}
+	 f2();
+	 console.log(" => :",v1);
+	 console.log(" => :",v2); // v2는 함수 호출이 끈나면 제거되는 변수이다.
+	 
+	 /* 실행결과
+	 exam12.html:38 f2(): 임꺽정 100        
+	    exam12.html:41  => : 홍길동                      // 위에와 달리 홍길동이 출력된다. 41번째줄 42번째줄 출력
+	    exam12.html:42 Uncaught ReferenceError: v2 is not defined
+     at exam12.html:42
+	 */
+</script>
+
+</body>
+</html>

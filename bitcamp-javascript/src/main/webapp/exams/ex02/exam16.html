@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex02</title>
+</head>
+<body>
+<h1>변수 - 배열 </h1>
+<script>
+"use strict"
+
+// 배열 만들기
+// 1)new => 빈 객체를 만든다.
+// 2)Object() => 객체에 필요한 최소한의 변수나 함수를 추가한다.
+//   ==> Array() 함수를 호출하면 내부적으로 Object() 함수를 호출한다.
+//   ==> 즉 자바의 상속 처럼 Array() 생성자는 Object() 생성자를 상속받는다.
+//   ==> 그래서 Array()를 호출할 때 상위 생성자인 Object()가 호출되는 것이다.
+// 3)Array() =>  배열 관리에 필요한 변수나 함수를 기본 객체에 추가한다.
+var arr = new Array(); // 배열은 new로 만들어야됨.
+          
+
+// 도대체 arr 객체에 들어있는 프로퍼티가 무엇인지 알아보자.!
+
+console.log(arr); /* []0: "홍길동"
+                       1: "임꺽정"
+                       2: "유관순"
+                       3: "안중근"
+                       length: 4
+                       __proto__: Array(0)
+*/
+
+// 배열에 값 추가하기
+arr.push("홍길동");
+arr.push("임꺽정");
+arr.push("유관순");
+arr.push("안중근");
+console.log(arr);
+/* (4) ["홍길동", "임꺽정", "유관순", "안중근"]
+0
+:
+"홍길동"
+1
+:
+"임꺽정"
+2
+:
+"유관순"
+3
+:
+"안중근"
+length
+:
+4
+__proto__
+:
+Array(0)
+  
+ */
+console.log(arr.length); //4
+console.log(arr[0]); //홍길동
+console.log(arr[1]); //임꺽정
+console.log(arr[2]); //유관순
+console.log(arr[3]); //안중근
+
+console.log(arr[4]); //undefined
+
+console.log(arr[-1]); // undefined
+
+  /* 실행 결과
+exam16.html:19 
+[]length: 0          // 배열만있음 length는
+__proto__: Array(0)
+
+
+------------------------------
+
+exam16.html:26 
+(4) ["홍길동", "임꺽정", "유관순", "안중근"]
+0
+:
+"홍길동"
+1
+:
+"임꺽정"
+2
+:
+"유관순"
+3
+:
+"안중근"
+length
+:
+4
+__proto__
+:
+Array(0)
+
+  */ 
+  </script>
+  
+</body>
+</html>

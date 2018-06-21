@@ -1,7 +1,11 @@
 # 변경 내역
-- build.gradle 변경
-- DispatcherServlet 삭제
-- CharacterEncodingFilter 삭제
-- web.xml 변경
-- RequestMapping, RequestParam 애노테이션 삭제
+- BoardService, BoardServiceImpl 추가
+- ClassroomService, ClassroomServiceImpl 추가
+- MemberService, MemberServiceImpl 추가
+- TeamService, TeamServiceImpl 추가
+- TaskService, TaskServiceImpl 추가
+- MemberDao 변경 
+- MemberMapper.xml 변경
 - 페이지 컨트롤러 변경
+ 
+

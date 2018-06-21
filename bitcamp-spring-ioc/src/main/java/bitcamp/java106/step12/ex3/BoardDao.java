@@ -20,10 +20,11 @@ public class BoardDao {
     
     public List<Board> selectList(int pageNo, int pageSize) {
         HashMap<String,Object> params = new HashMap<>();
-        params.put("startIndex", (pageNo-1) * pageSize);
-        params.put("pageSize",pageSize);
+        params.put("startIndex", (pageNo - 1) * pageSize);
+        params.put("pageSize", pageSize);
+        
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            return sqlSession.selectList("BoardMapper.selectList",params);
+            return sqlSession.selectList("BoardMapper.selectList", params);
         }
     }
 
@@ -37,7 +38,7 @@ public class BoardDao {
     
     public int delete(int no) {
         try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
-            int count = sqlSession.delete("BoardMapper.insert", no);
+            int count = sqlSession.delete("BoardMapper.delete", no);
             sqlSession.commit();
             return count;
         }

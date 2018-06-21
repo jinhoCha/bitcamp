@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex05</title>
+</head>
+<body>
+<h1>DOM API - CSS seletor </h1>
+<h1 id="header1" class="g1">제목1</h1>
+<h2 id="header2" class="g1">제목1.1</h2>
+<h2 id="header3" class="g1 g3">제목1.2</h2>
+
+<h1 id="header4" class="g2">제목2</h1>
+<h2 id="header5" class="g2 g3">제목2.1</h2>
+<h2 id="header6" class="g2 g3">제목2.2</h2>
+<script>
+"use strict"
+// 1) 아이디로찾기
+var e = document.querySelector("#header3");
+console.log(e);
+
+//2) 태그 이름으로찾기
+e = document.querySelector("h2");
+console.log(e);
+
+//2) 분류명으로 찾기
+e = document.querySelector(".g2");
+console.log(e);
+console.log("--------------------------------");
+
+e = document.querySelector(".g2.g3");
+console.log(e);
+console.log("--------------------------------");
+
+e = document.querySelector(".g2.g3.g1");  //null값 출력
+console.log(e);
+console.log("--------------------------------");
+//어떤 생성자를 통해 초기화 되었는지 알아내는 방법
+
+ /* 실행 결과                
+    
+ */
+ 
+</script>
+</body>
+</html>

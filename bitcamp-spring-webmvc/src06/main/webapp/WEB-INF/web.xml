@@ -10,14 +10,7 @@
     
     <display-name>spring-webmvc</display-name>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/spring/app-context.xml</param-value>
-    </context-param>
+    
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
