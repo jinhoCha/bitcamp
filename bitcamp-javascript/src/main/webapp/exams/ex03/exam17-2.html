@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex02</title>
+</head>
+<body>
+<h1>함수 - 익명 함수와 호출</h1>
+<script>
+
+// 함수를 단 한번만 호출한다면 정의하는 즉시 호출 할 수 있다.
+//
+// 1) 일반적인 방법
+// = > 함수를 정의한 후 변수에 저장한다.
+// => 그리고 그 변수 이름으로 호출한다.
+var f1 = function (a, b) { 
+	console.log("결과=", (a+ b));
+}
+f1(100,200);
+
+//2) 함수 정의 즉시 호출하기
+(function (a,b) { 
+	console.log("결과=", (a+ b));
+})(200, 300);
+</script>
+</body>
+</html>

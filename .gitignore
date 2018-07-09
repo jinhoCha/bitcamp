@@ -7,5 +7,8 @@
 **/build
 **/temp/
 **/.vscode
+**/node_modules
+**/package-lock.json
+**/aws.properties
 
 !buil.gradle

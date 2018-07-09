@@ -9,7 +9,7 @@
 <section>
 <article>
     <h1 id="header1" class="g1">자바스크립트</h1>
-    <p>자바스크립트는 프론트-엔드에서 실행되는 프로그래밍 언어이다</p>
+    <p>자바스크립트는 <b>프론트-엔드</b>에서 실행되는 프로그래밍 언어이다</p>
 </article>
 <article>
     <h1 id="header2" class="g1">자바</h1>
@@ -21,12 +21,20 @@
 "use strict"
 // Element.innerHTML : DOMString
 // => Element() 생성자가 추가한 프로퍼티이다.
-// => 태그의 콘텐트를 갖고 있다.
+// => 태그의 콘텐트를 HTML 코드 그대로 리턴한다,.
 
 var e = document.querySelector("article:first-child > p");
 console.log(e)
 console.log(e.innerHTML)
-e.innerHTML = "오호라...~~~"
+console.log("--------------------------")
+
+
+// Node.textContent
+// => Node() 생성자가 추가한 프로퍼티이다.
+// => 태그의 콘텐트에서 HTML 코드를 제거 한 후 텍스트만 리턴한다.
+console.log(e.textContent)
+console.log("--------------------------")
+
 
 
  /* 실행 결과                
