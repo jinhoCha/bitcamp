@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 => Impl클래스를 대체한다. -->
+<mapper namespace="MemberMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="member" type="study.jsp.mysite.model.Member">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="userid" column="userid" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="gender" column="gender" />
+		<result property="birthdate" column="birthdate" />
+		<result property="tel" column="tel" />
+		<result property="postcode" column="postcode" />
+		<result property="addr1" column="addr1" />
+		<result property="addr2" column="addr2" />
+		<result property="profileImgPath" column="profile_img_path" />
+		<result property="regDate" column="reg_date" />
+		<result property="editDate" column="edit_date" />
+		<result property="admin" column="admin" />
+	</resultMap>
+
+</mapper>

@@ -21,11 +21,12 @@
 </table>
 
 </div><!--.container-->
-<script id="trTemp" type="text/x-handlebars-template">
+
+<script id="tr-template" type="text/x-handlebars-template">
 <tr>
-    <td>{{no}}</td>
-    <td><a href='form.html?no={{no}}'>{{title}}</a></td>
-    <td>{{createdDate}}</td>
+	<td>{{no}}</td>
+	<td><a href='form.html?no={{no}}'>{{title}}</a></td>
+	<td>{{createdDate}}</td>
 </tr>
 </script>
 
@@ -35,20 +36,16 @@
 <script>
 
 // 템플릿 엔진이 사용할 템플릿 데이터 가져오기
-var trTemplateSrc = $("#tr-template").html(); 
+var trTemplateSrc = $("#tr-template").html();
 
-//템플릿 엔진 준비한 템플릿 데이터를 가지고 HTML을 생성할 템플릿 엔진 준비
+// 위에서 준비한 템플릿 데이터를 가지고 HTML을 생성할 템플릿 엔진 준비
 var templateFn = Handlebars.compile(trTemplateSrc);
-
-console.log(trTemplateSrc);
-
 
 $.getJSON("../../json/board/list", (data) => {
     for (var item of data) {
-    	// 위에서 준비한 템플릿 엔진과 데이터를  가지고 tr HTML을 생성한다.
+    	// 위에서 준비한 템플릿 엔진과 데이터를 가지고 tr HTML을 생성한다.
     	var trHTML = templateFn(item);
         $(trHTML).appendTo(tableBody);
-            
     }
 });
 /*

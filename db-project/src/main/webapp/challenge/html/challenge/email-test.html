@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>챌린지 설명</title>
+  <link rel="stylesheet" href="../../css/admin/admin-list2.css">
+  <link rel="stylesheet" href="../../css/program/card2.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/header/header_white.js"></script>
+  <script src="../../js/footer/footer.js"></script>
+  
+</head>
+
+<body>
+<header id="header"></header>
+  <form action="/sendMail/id" id="findForm" method="post">
+    <fieldset>
+        <legend class="screen_out">아이디 찾기 폼</legend>
+ 
+        <div class="box email">
+            <label for="email">이메일</label>
+            <input type="text" id="email" name="email" autofocus autocomplete="off" required />
+        </div>
+        <!-- // .box.email -->
+ 
+        <div class="box captcha">
+            <div class="loading"></div>
+            <!-- // .loading -->
+ 
+            <label for="captcha">자동 방지 코드</label>
+            <input type="text" id="captcha" name="captcha" autocomplete="off" required />
+            <img src="/captcha" alt="캡차 이미지" title="클릭시 새로고침" />
+        </div>
+        <!-- // .box.captcha -->
+ 
+        <div class="box btn">
+            <button type="submit" class="btn join">
+                <i class="fa fa-envelope"></i>
+                이메일 전송
+            </button>
+        </div>
+        <!-- // .box.btn -->
+    </fieldset>
+</form>
+
+
+
+
+<footer id="footer"></footer>
+
+
+</body>
+
+</html>

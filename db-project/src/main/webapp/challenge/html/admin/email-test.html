@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>챌린지 설명</title>
+  <link rel="stylesheet" href="../../css/admin/admin-list2.css">
+  <link rel="stylesheet" href="../../css/program/card2.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="../../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/header/header_white.js"></script>
+  <script src="../../js/footer/footer.js"></script>
+  
+</head>
+
+<body>
+<header id="header"></header>
+  <table class="table table-striped" style="width: 600px" align="center">
+    <tr>
+        <th>이메일(아이디)</th>
+        <td>
+            <input type="email" name="email" id="email" class="form-control"
+            style="margin-right: 10px; width: 300px"
+            aria-describedby="emailHelp" placeholder="Enter email"/>
+            <input type="button" value="인증" class="btn btn-primary btn-sm"
+                   onclick="checkMail()">
+        </td>    
+    </tr>
+    <tr id="joincode">
+        <th>인증번호</th>
+        <td>
+            <input type="number" name="inputCode" id="inputCode" class="form-control"
+            style="margin-right:10px; width:300px" placeholder="Enter code"/>
+            <input type="button" value="확인" class="btn btn-primary btn-sm"
+            onclick="checkJoinCode()">
+        </td>
+    </tr>
+    
+    <tr>
+        <th>닉네임</th>
+        <td>
+            <input type="text" name="nickName" id="nickName" class="form-control"
+            style="margin-right:10px;" placeholder="Enter NickName"/>
+            <input type="button" value="중복체크" class="btn btn-primary btn-sm"
+            onclick="checkNick()">
+        </td>
+    </tr>
+    
+     <tr>
+        <th>비밀번호</th>
+        <td>
+            <input type="password" maxlength="40" name="pw" id="pw" class="form-control"
+             placeholder="Password">
+           
+        </td>
+    </tr>
+    <tr>
+        <th>비밀번호 확인</th>
+        <td>
+            <input type="password" maxlength="40" name="pwCheck" id="pwCheck" class="form-control"
+             placeholder="Password">        
+        </td>
+    </tr>
+
+  </table>
+
+<footer id="footer"></footer>
+
+<script>
+     function checkMail(){
+    	 var email = document.getElementById("email").value;
+    	 
+    	 if(email ==""){
+    		 alert("메일을 입력해 주세요.")
+    		 return false;
+    	 }
+    	 
+    	 var xhttp = new XMLHttpRequest();
+    	 xhttp.onreadystatechange = function () {
+    		 if (xhttp.readyState ==4) {
+    			 var data =JSON.parse(xhttp.responseText);
+    			 if(data != null){
+    			 alert("이미 가입한 메일 입니다.");
+    			 $(#joincode).css("display", "none");
+    			 
+    		 } else {
+    			 sendMail(email);
+    			 $("joincode").css("display", "");
+    		 }
+    	 }
+     };
+     xhttp.opne("POST", 'checkMail/', true);
+     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
+     return false;
+     }
+     
+     function sendMail(email){
+    	 var xhttp = new XMLHttpRequest();
+    	 xhttp.onreadystatechange = function() {
+    		 if (xhttp.readyState ==4){
+    			 if(xhttp.status ==200)
+    				 alert("메일을 정상적으로 보냈습니다.");
+    			 else
+    				 alert("올바른 메일 형식이 아닙니다.");
+    		 }
+    	 };
+    	 xhttp.opne("POST", 'sendMail/', true);
+    	 xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
+    	 xhttp.send('email=' + email);
+    	 return false;
+     }
+     </script>
+</body>
+
+</html>

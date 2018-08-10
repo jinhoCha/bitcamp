@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 => Impl클래스를 대체한다. -->
+<mapper namespace="BbsDocumentMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="bbs_document" type="study.jsp.mysite.model.BbsDocument">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="id" column="id" />
+		<result property="category" column="category" />
+		<result property="name" column="name" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="subject" column="subject" />
+		<result property="content" column="content" />
+		<result property="hit" column="hit" />
+		<result property="regDate" column="reg_date" />
+		<result property="editDate" column="edit_date" />
+		<result property="secret" column="secret" />
+		<result property="ipAddress" column="ip_address" />
+		<result property="memberId" column="member_id" />
+		<result property="imagePath" column="image_path" />
+		<!-- 테이블에 없는 컬럼명이라도, 필요에 따라서 가공된 조회결과에 
+		     대한 별칭과 멤버변수를 연결할 수 있다. -->
+		<result property="isNew" column="is_new" />
+	</resultMap>
+
+</mapper>
+
+
+
+
+
