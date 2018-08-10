@@ -1,3 +1,24 @@
+/**
+ * Copyright 2017-present, Facebook, Inc. All rights reserved.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * Messenger Platform Quick Start Tutorial
+ *
+ * This is the completed code for the Messenger Platform quick start tutorial
+ *
+ * https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start/
+ *
+ * To run this code, you must do the following:
+ *
+ * 1. Deploy this code to a server running Node.js
+ * 2. Run `npm install`
+ * 3. Update the VERIFY_TOKEN
+ * 4. Add your PAGE_ACCESS_TOKEN to your environment vars
+ *
+ */
+
 'use strict';
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 // Imports dependencies and set up http server
@@ -92,13 +113,41 @@ app.get('/webhook', (req, res) => {
 function handleMessage(sender_psid, received_message) {
   let response;
   
-  // Checks if the message contains text
-  if (received_message.text) {    
-    // Create the payload for a basic text message, which
-    // will be added to the body of our request to the Send API
+  if (received_message.text == 'hello') {    
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
+      "text": `나도 반가워요~~~ ㅋ`
     }
+  } else if (received_message.text = 'menu') {
+      response = {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "generic",
+                  "elements": [{
+                    "title": "어떤 메뉴을 원하시나요?",
+                    "subtitle": "아래에 원하는 메뉴를 선택해 주세요!",
+                    "buttons": [
+                      {
+                        "type": "postback",
+                        "title": "치맥",
+                        "payload": "menu01",
+                      },
+                      {
+                        "type": "postback",
+                        "title": "불소",
+                        "payload": "menu02",
+                      },
+                      {
+                          "type": "postback",
+                          "title": "부막",
+                          "payload": "menu03",
+                      }
+                    ],
+                  }]
+                }
+              }
+            }
+  
   } else if (received_message.attachments) {
     // Get the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
