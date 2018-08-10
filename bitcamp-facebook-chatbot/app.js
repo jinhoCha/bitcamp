@@ -64,6 +64,8 @@ app.post('/webhook', (req, res) => {
 
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
+      // 직접치면 handleMessage가 출력 
+      // 버트면이면 handlePostback이 출력
       if (webhook_event.message) {
         handleMessage(sender_psid, webhook_event.message);        
       } else if (webhook_event.postback) {
@@ -193,7 +195,15 @@ function handlePostback(sender_psid, received_postback) {
     response = { "text": "Thanks!" }
   } else if (payload === 'no') {
     response = { "text": "Oops, try sending another image." }
+  } else if(payload === 'menu01'){
+	  response ={ "text": "오~~ 탁월한 선택! 전지현 드라마 보셨군요!"}
+  } else if(payload === 'menu02'){
+	  response ={ "text": "그러쥬"}
+  } else if(payload === 'menu03'){
+	  response ={ "text": "날씨가 더우니 집에서 쉬세요"}
   }
+  
+  )
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 }
