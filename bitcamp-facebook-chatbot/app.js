@@ -203,7 +203,7 @@ function handlePostback(sender_psid, received_postback) {
 	  response ={ "text": "날씨가 더우니 집에서 쉬세요"}
   }
    
-  )
+  
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
 }
